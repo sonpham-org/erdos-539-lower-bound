@@ -23,9 +23,11 @@ theorem amplifiedExponent_offset (ε : ℝ) (hε : 4 + 6 * ε ≠ 0) :
   have hε' : 4 + ε * 6 ≠ 0 := by
     simpa [mul_comm] using hε
   field_simp [hden, hε, hε']
-  all_goals
-    try field_simp [hε']
-    ring
+  have hmul : (4 + ε * 6) * (4 + ε * 6)⁻¹ = 1 :=
+    mul_inv_cancel₀ hε'
+  have hmul' := congrArg (fun z : ℝ ↦ z * (4 + 8 * ε)) hmul
+  ring_nf at hmul' ⊢
+  linarith
 
 /-- Substituting `ε = 1/(4p²-2)` gives the displayed recurrence denominator. -/
 theorem recurrence_denominator (p : ℝ)
