@@ -1,0 +1,29 @@
+name: Lean
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Reject proof placeholders
+        shell: bash
+        run: |
+          if grep -Rnw --include='*.lean' -E '\b(sorry|admit)\b' Erdos539 Erdos539.lean; then
+            echo 'Lean proof placeholder found.'
+            exit 1
+          fi
+
+      - name: Build Lean project
+        uses: leanprover/lean-action@v1.5.0
+        with:
+          use-mathlib-cache: true
