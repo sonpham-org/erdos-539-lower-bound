@@ -20,7 +20,9 @@ theorem amplifiedExponent_offset (ε : ℝ) (hε : 4 + 6 * ε ≠ 0) :
   have hden : 3 * (1 / 2 + ε) + 1 / 2 ≠ 0 := by
     rw [show 3 * (1 / 2 + ε) + 1 / 2 = (4 + 6 * ε) / 2 by ring]
     exact div_ne_zero hε (by norm_num)
-  field_simp [hden, hε]
+  have hε' : 4 + ε * 6 ≠ 0 := by
+    simpa [mul_comm] using hε
+  field_simp [hden, hε, hε']
   ring
 
 /-- Substituting `ε = 1/(4p²-2)` gives the displayed recurrence denominator. -/
