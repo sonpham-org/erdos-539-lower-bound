@@ -33,12 +33,13 @@ theorem cofactorSet_nonempty {A : Finset ℕ} (hA : A.Nonempty) :
     (cofactorSet A).Nonempty := by
   rcases hA with ⟨a, ha⟩
   refine ⟨a / Nat.gcd a a, ?_⟩
-  simp [cofactorSet, ha]
+  rw [Finset.mem_image]
+  exact ⟨(a, a), by simp [ha], rfl⟩
 
 example : cofactorSet {1, 2, 3} = {1, 2, 3} := by
   decide
 
-example : cofactorSet {6, 10, 15} = {1, 2, 3, 5, 6, 10} := by
+example : cofactorSet {6, 10, 15} = {1, 2, 3, 5} := by
   decide
 
 end Erdos539
