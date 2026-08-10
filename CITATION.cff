@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this result, please cite the manuscript."
+title: "A Stretched-Exponential Lower Bound for Erdős Problem 539"
+type: article
+authors:
+  - family-names: Pham
+    given-names: Son
+date-released: 2026-08-09
+repository-code: "https://github.com/sonpham-org/erdos-539-lower-bound"
+url: "https://github.com/sonpham-org/erdos-539-lower-bound/blob/main/paper/erdos539_lower_bound_audited.pdf"
+keywords:
+  - Erdős Problem 539
+  - additive combinatorics
+  - positive differences
+  - Polynomial Freiman-Ruzsa
+  - Lean 4
+abstract: >-
+  An audited proof of a stretched-exponential improvement over the square-root
+  lower bound in Erdős Problem 539, together with a partial Lean 4
+  formalization and an explicit formalization-status ledger.
