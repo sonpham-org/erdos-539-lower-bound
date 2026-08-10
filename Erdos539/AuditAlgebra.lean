@@ -17,8 +17,10 @@ quantity used in equation (16). -/
 theorem amplifiedExponent_offset (ε : ℝ) (hε : 4 + 6 * ε ≠ 0) :
     (2 * (1 / 2 + ε)) / (3 * (1 / 2 + ε) + 1 / 2) - 1 / 2 =
       ε / (4 + 6 * ε) := by
-  rw [show 3 * (1 / 2 + ε) + 1 / 2 = (4 + 6 * ε) / 2 by ring]
-  field_simp [hε]
+  have hden : 3 * (1 / 2 + ε) + 1 / 2 ≠ 0 := by
+    rw [show 3 * (1 / 2 + ε) + 1 / 2 = (4 + 6 * ε) / 2 by ring]
+    exact div_ne_zero hε (by norm_num)
+  field_simp [hden, hε]
   ring
 
 /-- Substituting `ε = 1/(4p²-2)` gives the displayed recurrence denominator. -/

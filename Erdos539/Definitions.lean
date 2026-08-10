@@ -33,7 +33,7 @@ theorem cofactorSet_nonempty {A : Finset ℕ} (hA : A.Nonempty) :
     (cofactorSet A).Nonempty := by
   rcases hA with ⟨a, ha⟩
   refine ⟨a / Nat.gcd a a, ?_⟩
-  rw [Finset.mem_image]
+  simp only [cofactorSet, Finset.mem_image]
   exact ⟨(a, a), by simp [ha], rfl⟩
 
 example : cofactorSet {1, 2, 3} = {1, 2, 3} := by
