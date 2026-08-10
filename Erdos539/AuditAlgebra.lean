@@ -23,6 +23,7 @@ theorem amplifiedExponent_offset (ε : ℝ) (hε : 4 + 6 * ε ≠ 0) :
   have hε' : 4 + ε * 6 ≠ 0 := by
     simpa [mul_comm] using hε
   field_simp [hden, hε, hε']
+  field_simp [hε']
   ring
 
 /-- Substituting `ε = 1/(4p²-2)` gives the displayed recurrence denominator. -/
